@@ -4,8 +4,11 @@
 
 Power-up your [Accompanist](https://google.github.io/accompanist/permissions/) Permission by handling runtime permission event. It complements with [HiltViewModel](https://developer.android.com/training/dependency-injection/hilt-jetpack#viewmodels).  It will save you from the tedious job around Runtime Permissions.
 
+
 ## Requirements
-`minSdk 24`
+
+1. `minSdk 24`  
+2. [Accompanist permission library](https://google.github.io/accompanist/permissions/)
 
 ## Installation
 ```build.gradle
