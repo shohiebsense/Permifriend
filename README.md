@@ -1,5 +1,5 @@
 # Permifriend
-Power-up your Accompanist Permission by handling runtime permission event. It complements with `HiltViewModel`.  It will save you from the tedious job regarding Runtime Permissions.
+Power-up your [Accompanist](https://google.github.io/accompanist/permissions/) Permission by handling runtime permission event. It complements with [HiltViewModel](https://developer.android.com/training/dependency-injection/hilt-jetpack#viewmodels).  It will save you from the tedious job around Runtime Permissions.
 
 ## Installation
 
