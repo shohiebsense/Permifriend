@@ -1,6 +1,6 @@
 # Permifriend
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.shohiebsense/permifriend/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/io.github.shohiebsense/permifriend)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.shohiebsense/permifriend/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.shohiebsense/permifriend)
 
 Power-up your [Accompanist](https://google.github.io/accompanist/permissions/) Permission by handling runtime permission event. It complements with [HiltViewModel](https://developer.android.com/training/dependency-injection/hilt-jetpack#viewmodels).  It will save you from the tedious job around Runtime Permissions.
 
