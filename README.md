@@ -1,7 +1,15 @@
 # Permifriend
 Power-up your [Accompanist](https://google.github.io/accompanist/permissions/) Permission by handling runtime permission event. It complements with [HiltViewModel](https://developer.android.com/training/dependency-injection/hilt-jetpack#viewmodels).  It will save you from the tedious job around Runtime Permissions.
 
+## Requirements
+`minSdk 24`
+
 ## Installation
+```build.gradle
+dependencies {
+    implementation 'io.github.shohiebsense:permifriend:0.1.0'
+}
+```
 
 ## Usage
 
