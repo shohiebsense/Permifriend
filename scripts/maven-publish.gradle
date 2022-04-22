@@ -1,0 +1,88 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+apply plugin: 'org.jetbrains.dokka'
+
+group = "io.github.shohiebsense"
+version = "0.1.0"
+
+
+
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    if (project.plugins.findPlugin("com.android.library")) {
+        // For Android libraries
+        from android.sourceSets.main.java.srcDirs
+        from android.sourceSets.main.kotlin.srcDirs
+    } else {
+        // For pure Kotlin libraries
+        from sourceSets.main.java.srcDirs
+        from sourceSets.main.kotlin.srcDirs
+    }
+}
+
+artifacts {
+    archives androidSourcesJar
+}
+
+task javadocJar(type: Jar, dependsOn: dokkaJavadoc) {
+    archiveClassifier.set('javadoc')
+    from dokkaJavadoc.outputDirectory
+}
+
+tasks.withType(dokkaHtmlPartial.getClass()).configureEach {
+    pluginsMapConfiguration.set(
+            ["org.jetbrains.dokka.base.DokkaBase": """{ "separateInheritedMembers": true}"""]
+    )
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId "io.github.shohiebsense"
+                artifactId "permifriend"
+                version "0.1.0"
+
+                // Two artifacts, the `aar` (or `jar`) and the sources
+                if (project.plugins.findPlugin("com.android.library")) {
+                    from components.release
+                } else {
+                    from components.java
+                }
+
+                artifact androidSourcesJar
+                artifact javadocJar
+
+                pom {
+                    name = "permifriend"
+                    description = " Power-up your Accompanist Permission by handling runtime permission event."
+                    url = "https://github.com/shohiebsense/Permifriend"
+                    licenses {
+                        license {
+                            name = 'Apache License'
+                            url = 'https://www.apache.org/licenses/LICENSE-2.0'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = "shohiebsense"
+                            name = "Shohieb Nasruddin"
+                            email = "shohiebnasruddin@gmail.com"
+                        }
+                    }
+
+                    // Version control info.
+                    scm {
+                        connection = "scm:git:github.com/shohiebsense/Permifriend.git"
+                        developerConnection = "scm:git:ssh://github.com/shohiebsense/Permifriend.git"
+                        url = "https://github.com/shohiebsense/Permifriend/tree/main"
+                    }
+                }
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications
+}
