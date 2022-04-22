@@ -11,8 +11,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor() : ViewModel(), PermifriendScope  {
 
-    override val isPermissionRequestButtonClicked: MutableState<Boolean> = mutableStateOf(false)
-    override val isPermissionDialogShowing: MutableState<Boolean> = mutableStateOf(false)
+    override val isPermissionRequestButtonClicked = mutableStateOf(false)
+    override val isPermissionDialogShowing = mutableStateOf(false)
 
     val shouldShowNavigateToSettingDialog = mutableStateOf(false)
 
